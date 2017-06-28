@@ -31,7 +31,7 @@
 <h2><span>{{ .Title }}</span></h2>
 <h3><span>{{ .Date.Format "Mon, Jan 2, 2006" }}</span></h3>
 <p>
-  <span>{{ .Content | markdownify }}</span>
+{{ .Content | markdownify }}
 </p>
 
 {{ end }}
