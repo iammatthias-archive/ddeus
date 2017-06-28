@@ -59,9 +59,8 @@ z-index: -1;
 
 .meat {
 h1, h2, h3, h4, h5, h6, small, strong, p, a {
-display: block;
 span {background: $black;
-padding: .618% 3.82% .618% 0;
+padding: .618% 3.82% .618% .382%;
 box-decoration-break: clone;
 }
 .title {background: $white;
@@ -73,6 +72,13 @@ margin-top: 12.36%;
 .meat-body {
 margin-top: 24.72%;
 }
+}
+
+.foot {
+padding: .618% 3.82% .618% .382%;
+background: $white;
+color: $black;
+a {color: $black;}
 }
 
 

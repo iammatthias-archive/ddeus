@@ -1,9 +1,9 @@
 ---
+author: 
+date: 2015-01-21
+description: ""
 title: ""
-author : "Matthias Jordan"
-description : ""
-date : ""
-type : "blog"
-slug : ""
-tags : ""
+type: article
 ---
+<span>
+<!-- Content Goes Here -->

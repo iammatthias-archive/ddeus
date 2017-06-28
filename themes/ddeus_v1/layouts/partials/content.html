@@ -9,24 +9,41 @@
   </nav>
 
 <section class="meat">
+<!-- Portrait -->
 <img src="/assets/risograph_dt_tad_frame.png" class="fixed" />
+<!-- END Portrait -->
+<!-- Intro -->
       <div class="row meat-intro">
         <div class="col-xs-8">
           <h1><span class="title">THADDEUS JORDAN</span></h1>
           <h2><span class="title">Just a dude with a guitar and a dream.</span></h2>
+        </div>
+        <div class="col-xs-2 first-xs last-sm">
+        </div>
+      </div>
+<!-- END Intro -->
+<!-- Content -->
+      <div class="row meat-body">
+        <div class="col-xs-8">
+
+{{ range .Data.Pages.ByPublishDate }}
+
+<h2><span>{{ .Title }}</span></h2>
+<h3><span>{{ .Date.Format "Mon, Jan 2, 2006" }}</span></h3>
+<p>
+  <span>{{ .Content | markdownify }}</span>
+</p>
+
+{{ end }}
+
+
+
+
 
         </div>
         <div class="col-xs-2 first-xs last-sm">
-      </div>
-      <div class="row meat-body">
-        <div class="col-xs-8">
-          <h1><span>Content</span></h1>
-          <h2><span>Throw some words up in here</span></h2>
-          <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>
-          <p><span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
-          <p><span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
         </div>
-        <div class="col-xs-2 first-xs last-sm">
       </div>
+<!-- END Content -->
 
 </section>
