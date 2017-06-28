@@ -13,6 +13,9 @@ var onError = function (err) {
   this.emit('end');
 };
 
+gulp.task("delete", function () {
+del(["themes/ddeus_v1/static/**/*"])
+})
 
 // Compile SCSS files to CSS
 gulp.task("scss", function () {
@@ -57,3 +60,5 @@ gulp.task("watch", ["scss", "js", "assets"], function () {
 gulp.task('default', ['scss', 'js', "assets", 'watch']);
 
 gulp.task('build', ['scss', 'js', "assets"]);
+
+gulp.task('delete', ['delete']);
