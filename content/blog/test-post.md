@@ -9,7 +9,6 @@ tags:
 - blog
 - ''
 Description: weeeee
-draft: true
 
 ---
 sdkljsdlfasdfjkj<span><!-- Content Goes Here --></span>
