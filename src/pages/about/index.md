@@ -1,19 +1,39 @@
 ---
 templateKey: 'about-page'
 path: /about
-title: About our values
+title: The Thad.
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
+## Bio
+Thaddeus Jordan grew up in the heart of Silicon Valley. A musician at his core, Thaddeus is a forward thinking, creative powerhouse. Throughout high school he pursued speech and debate, and continued honing those skills in the Student Senate of his community college. Due to expansive experience with world travel, Thaddeus has fosterd a global mindsent, and a strong desire to impact the world through positive projects.
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+### Experience
+##### Summer 2012
+Biomedical Engineering Teacher’s Assistant at Tech Academy
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
+##### Summer 2010 & 2011
+Intern at Block Single Molecule Biophysics Lab at Stanford University
 
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
+##### 2009 & 2013
+High School Mathematics and General Education Elementary School Tutor
 
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+### Education
+##### 2014 - 2016
+University of Southern California
+Los Angeles, California Economics B.A.
+
+##### 2012-2014
+De Anza College
+Cupertino, California
+
+#####2008-2012
+Leland High School
+San Jose, California
+
+### Extracurriculars
+##### 2013 - 2014
+De Anza Student Body Senator
+President of the Alpha Sigma Alpha Chapter of Phi Theta Kappa De Anza Dean’s List Student
+
+##### 2011-2012
+Leland Science Club: Vice President
+Leland Speech and Debate: Humorous Interpretation Team Captain
