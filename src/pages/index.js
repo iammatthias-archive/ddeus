@@ -71,16 +71,14 @@ export default class IndexPage extends React.Component {
       <div>
         <Hero>
           <HeroTitle>Thaddeus Jordan</HeroTitle>
-          <HeroBlurb>I'm just an egg with a guitar.</HeroBlurb>
+          <HeroBlurb>Just an egg with a guitar.</HeroBlurb>
         </Hero>
         <Section>
           <SectionTitle>Latest</SectionTitle>
           <Grid>
             {posts.map(({ node: post }) => (
               <GridItem key={post.id} to={post.fields.slug}>
-                <PostTitle className="has-text-primary">
-                  {post.frontmatter.title}
-                </PostTitle>
+                <PostTitle>{post.frontmatter.title}</PostTitle>
                 <PostDate>
                   <br />
                   {post.frontmatter.date}
