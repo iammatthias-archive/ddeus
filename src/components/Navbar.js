@@ -1,38 +1,55 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from "react";
+import Link from "gatsby-link";
+import styled from "styled-components";
 
-import instagram from '../img/insta-icon.svg'
-import logo from '../img/tad_logo.png'
+import instagram from "../img/insta-icon.svg";
+import logo from "../img/tad_logo.png";
+
+const Nav = styled.nav`
+  flex: 0 0 auto;
+  padding: 2rem;
+`;
+const NavBrand = styled.div`
+  display: flex;
+  flex-shrink: 0;
+  min-height: 3.25rem;
+`;
+const NavbarItem = styled(Link)`
+  align-items: center;
+  display: flex;
+  img {
+    display: block;
+    height: auto;
+    width: 5rem;
+  }
+`;
 
 const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <figure className="image">
-            <img src={logo} alt="Thaddeus Jordan" style={{ width: '28px'}} />
-          </figure>
-        </Link>
-      </div>
-      <div className="navbar-start">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-      </div>
-      <div className="navbar-end">
-        <a
-          className="navbar-item"
-          href="https://www.instagram.com/tkjordan73/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={instagram} alt="Instagram" />
-          </span>
-        </a>
-      </div>
-    </div>
-  </nav>
-)
+  <Nav>
+    <NavBrand>
+      <NavbarItem to="/">
+        <img src={logo} alt="Thaddeus Jordan" />
+      </NavbarItem>
+    </NavBrand>
+    <Link className="navbar-item" to="/about">
+      About
+    </Link>
+    <Link className="navbar-item" to="#">
+      LinkedIn
+    </Link>
+    <Link className="navbar-item" to="#">
+      Facebook
+    </Link>
+    <Link className="navbar-item" to="#">
+      Instagram
+    </Link>
+    <Link className="navbar-item" to="#">
+      SoundCloud
+    </Link>
+    <Link className="navbar-item" to="#">
+      Discord
+    </Link>
+  </Nav>
+);
 
-export default Navbar
+export default Navbar;
