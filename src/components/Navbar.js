@@ -9,14 +9,11 @@ import logo from "../img/tad_logo.svg";
 import close from "../img/close.svg";
 
 const NavWrapper = styled.nav`
-  flex: 0 0 auto;
   padding: 0rem;
-  max-height: 10vh;
   text-align: center;
   ${breakpoint("lg")`
-  padding: 2rem;
-  flex: 1 1 auto;
-  max-height: 100vh;
+    max-width: 20rem;
+    width: 100%;
 `};
 
   div div .bm-burger-button {
@@ -31,11 +28,18 @@ const NavWrapper = styled.nav`
     display: none;
   `};
   }
+  div .bm-menu-wrap {
+    margin-top: -1rem;
+  }
 `;
 const Nav = styled.div`
   display: none;
   ${breakpoint("lg")`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  position: sticky;
+top: 20px;
 `};
 `;
 const NavBrand = styled(Link)`
@@ -43,17 +47,28 @@ const NavBrand = styled(Link)`
   display: flex;
   flex-shrink: 0;
   margin-bottom: 1.5rem;
+  position: static;
   img {
     display: block;
-    height: auto;
-    width: 5rem;
-    margin: 0;
+    max-width: 5rem;
+    margin: 0 auto;
   }
+`;
+const NavbarList = styled.ul`
+  padding: 0;
 `;
 const NavbarItem = styled.li`
   align-items: center;
   display: flex;
   margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  a {
+    color: ${props => props.theme.colors.c1};
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const BurgerMenuWrapper = styled.i`
@@ -65,6 +80,7 @@ display: none;
 
 const Menu = styled(SideMenu)`
   display: block;
+  background: ${props => props.theme.colors.c4};
   ${breakpoint("lg")`
 display: none;
 `};
@@ -86,7 +102,7 @@ var styles = {
     zIndex: "900"
   },
   bmBurgerBars: {
-    background: "#373a47"
+    background: "#FE5F55"
   },
   bmCrossButton: {
     height: "50px",
@@ -98,22 +114,22 @@ var styles = {
     background: "transparent"
   },
   bmMenu: {
-    background: "#ffffff",
+    background: "#EBF2F4",
     padding: "2.5em 1.5em 0",
     fontSize: "1.15em"
   },
   bmMorphShape: {
-    fill: "#ffffff"
+    fill: "#EBF2F4"
   },
   bmItemList: {
-    color: "#b8b7ad",
+    color: "#001F3F",
     padding: "0.8em"
   },
   bmItem: {
     display: "inline-block"
   },
   bmOverlay: {
-    background: "#ffffff"
+    background: "#EBF2F4"
   }
 };
 
@@ -127,52 +143,54 @@ const Navbar = () => (
       right
       customCrossIcon={<img src={close} />}
     >
-      <ul>
-        <li>
-          <Link to="/" exact>
+      <NavbarList>
+        <NavbarItem>
+          <NavBrand to="/" exact>
             <img src={logo} alt="Thaddeus Jordan" />
-          </Link>
-        </li>
-        <li>
-          <Link className="navbar-item" to="#">
-            LinkedIn
-          </Link>
-        </li>
-        <li>
-          <Link className="navbar-item" to="#">
-            Facebook
-          </Link>
-        </li>
-        <li>
-          <Link className="navbar-item" to="#">
-            Instagram
-          </Link>
-        </li>
-        <li>
-          <Link className="navbar-item" to="#">
-            SoundCloud
-          </Link>
-        </li>
-        <li>
-          <Link className="navbar-item" to="#">
-            Discord
-          </Link>
-        </li>
-      </ul>
+          </NavBrand>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">LinkedIn</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Facebook</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Instagram</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">SoundCloud</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Discord</Link>
+        </NavbarItem>
+      </NavbarList>
     </Menu>
 
     <Nav>
       <NavBrand to="/" exact>
         <img src={logo} alt="Thaddeus Jordan" />
       </NavBrand>
-      <ul>
-        <NavbarItem to="/about">About</NavbarItem>
-        <NavbarItem to="#">LinkedIn</NavbarItem>
-        <NavbarItem to="#">Facebook</NavbarItem>
-        <NavbarItem to="#">Instagram</NavbarItem>
-        <NavbarItem to="#">SoundCloud</NavbarItem>
-        <NavbarItem to="#">Discord</NavbarItem>
-      </ul>
+      <NavbarList>
+        <NavbarItem>
+          <Link to="/about">About</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">LinkedIn</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Facebook</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Instagram</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">SoundCloud</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link to="#">Discord</Link>
+        </NavbarItem>
+      </NavbarList>
     </Nav>
   </NavWrapper>
 );

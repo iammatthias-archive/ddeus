@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components'
+import { injectGlobal } from "styled-components";
 
 injectGlobal`
   /* http://meyerweb.com/eric/tools/css/reset/
@@ -22,7 +22,7 @@ injectGlobal`
     padding: 0;
     border: 0;
     vertical-align: baseline;
-    color: #223843;
+    color: #EBF2F4;
   }
 
   /* Added to Fix Footer to bottom of viewport */
@@ -58,6 +58,9 @@ injectGlobal`
 
   ol, ul {
     list-style: none;
+  }
+  ol, ul, li {
+    padding-left: 1rem;
   }
 
   blockquote, q {
@@ -95,4 +98,8 @@ injectGlobal`
   	height: auto;
   }
 
-`
+  p, li {
+    margin-bottom: 1rem;
+  }
+
+`;

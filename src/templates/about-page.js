@@ -1,6 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Content, { HTMLContent } from "../components/Content";
+import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
+
+const Section = styled.section`
+  padding: 1.5rem 3rem;
+  width: 100%;
+  color: ${props => props.theme.colors.c4};
+  ${breakpoint("lg")`
+  padding: 5rem 10rem;
+`};
+`;
+
+const PageTitle = styled.h2`
+  color: ${props => props.theme.colors.c4};
+`;
 
 export const AboutPageTemplate = ({
   title,
@@ -11,20 +26,10 @@ export const AboutPageTemplate = ({
   const PageContent = contentComponent || Content;
 
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section>
+      <PageTitle>{title}</PageTitle>
+      <PageContent className="content" content={content} />
+    </Section>
   );
 };
 
