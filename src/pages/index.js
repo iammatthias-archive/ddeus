@@ -2,6 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
+
+const Wrapper = styled.div`
+  margin: 1.5rem;
+  ${breakpoint("lg")`
+margin: 0rem;
+`};
+`;
 
 const Hero = styled.section`
   height: 65vh;
@@ -22,17 +30,23 @@ const HeroBlurb = styled.h2`
 `;
 
 const Section = styled.section`
-  padding: 3rem;
+  padding: 0;
   width: 100%;
 `;
 const Grid = styled.div`
   display: grid;
+  grid-template-columns: 1fr;
+  ${breakpoint("lg")`
   grid-template-columns: 1fr 1fr;
+`};
 `;
 const GridItem = styled(Link)`
-  margin: 1.5rem;
+  margin-bottom: 1.5rem;
   border: 1px solid #eaecee;
   padding: 2rem 4rem;
+  ${breakpoint("lg")`
+  margin: 1.5rem;
+`};
 `;
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
@@ -68,7 +82,7 @@ export default class IndexPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark;
 
     return (
-      <div>
+      <Wrapper>
         <Hero>
           <HeroTitle>Thaddeus Jordan</HeroTitle>
           <HeroBlurb>Just an egg with a guitar.</HeroBlurb>
@@ -89,7 +103,7 @@ export default class IndexPage extends React.Component {
             ))}
           </Grid>
         </Section>
-      </div>
+      </Wrapper>
     );
   }
 }
