@@ -1,0 +1,5 @@
+# Redirect domain aliases to primary domain
+https://ddeus.com/* https://tha.ddeus.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://ddeus.netlify.com/* https://tha.ddeus.com/:splat 301!
