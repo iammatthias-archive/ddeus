@@ -8,8 +8,6 @@ import theme from "../styles/theme";
 
 import favicon from "../img/bruh.jpg";
 
-import Navbar from "../components/Navbar";
-
 const Body = styled.div`
   background: linear-gradient(
     45deg,
@@ -19,39 +17,13 @@ const Body = styled.div`
     rgba(57, 145, 192, 1) 80%,
     rgba(93, 165, 203, 1) 100%
   );
-  animation: Gradient 30s ease infinite;
-
-  @keyframes Gradient {
-    0% {
-      background-position: 0% 90%;
-    }
-    50% {
-      background-position: 100% 11%;
-    }
-    100% {
-      background-position: 0% 90%;
-    }
-  }
   padding: 1rem;
-  height: 100%;
-`;
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: ${props => props.theme.colors.c4};
-  ${breakpoint("lg")`
-  flex-direction: row;
-`};
 `;
 const Content = styled.div`
   flex: 0 0 auto;
   background: ${props => props.theme.colors.c2};
   overflow-y: auto;
-  min-height: 100vh;
-  ${breakpoint("lg")`
-  flex: 1 1 auto;
-  width: 100%;
-`};
+  height: calc(100vh - 2rem);
 `;
 
 const TemplateWrapper = ({ children }) => (
@@ -61,10 +33,7 @@ const TemplateWrapper = ({ children }) => (
         <title>Thaddeus Jordan</title>
         <link rel="icon" type="image/jpg" href={favicon} sizes="16x16" />
       </Helmet>
-      <Wrapper>
-        <Navbar />
-        <Content>{children()}</Content>
-      </Wrapper>
+      <Content>{children()}</Content>
     </Body>
   </ThemeProvider>
 );
