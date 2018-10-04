@@ -12,7 +12,7 @@ import config from "../utils/siteConfig";
 
 const Hero = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 61.8vh;
   position: relative;
   overflow: hidden;
   .gatsby-image-outer-wrapper {
@@ -29,30 +29,34 @@ const Wrapper = styled(Box)`
 
 const TitleWrapper = styled(Box)`
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  padding: 4.5rem 2rem;
   background: ${props => props.theme.colors.bg};
+  text-align: center;
 `;
 
 const Title = styled.h1`
-  color: ${props => props.theme.colors.text};
   max-width: ${props => props.theme.maxWidthText};
+  color: ${props => props.theme.colors.text};
   text-align: center;
   margin: 0 auto;
   padding: 0 32px;
 `;
 
 const SubTitle = styled.h3`
-  color: ${props => props.theme.colors.text};
   max-width: ${props => props.theme.maxWidthText};
+  color: ${props => props.theme.colors.text};
   margin: 0 auto;
-  text-align: center;
+  padding: 0.5rem;
+`;
+const Date = styled.h3`
+  max-width: ${props => props.theme.maxWidthText};
+  color: ${props => props.theme.colors.text};
+  margin: 0 auto;
+  padding: 0.5rem;
 `;
 
 const Content = styled.main`
-  margin-top: 9rem;
+  margin-top: 4.5rem;
   margin-bottom: 9rem;
   p {
     text-align: justify;
@@ -99,12 +103,13 @@ const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
       <SEO caseNode={caseNode} casePath={caseNode.uid} caseSEO />
       <Hero>
         <Image sizes={data.header_image.localFile.childImageSharp.sizes} />
-        <TitleWrapper py={4}>
-          <Title>{data.title.text}</Title>
-        </TitleWrapper>
       </Hero>
-      <Wrapper py={4} px={4} mx="auto">
-        <SubTitle>{data.subtitle.text}</SubTitle>
+      <Wrapper>
+        <TitleWrapper>
+          <Title>{data.title.text}</Title>
+          <SubTitle>{data.subtitle.text}</SubTitle>
+          <Date>{caseNode.last_publication_date}</Date>
+        </TitleWrapper>
         <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
       </Wrapper>
       <Footer isCase />

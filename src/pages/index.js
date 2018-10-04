@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "react-emotion";
-import { Flex } from "grid-emotion";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 import GridItem from "../components/GridItem";
@@ -17,9 +16,10 @@ const Header = styled.header`
   }
 `;
 
-const Wrapper = styled(Flex)`
+const Wrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
   justify-content: space-between;
+  display: flex;
   flex-wrap: wrap;
   padding: 4rem;
   @media (max-width: ${props => props.theme.breakpoint.m}) {
@@ -29,19 +29,6 @@ const Wrapper = styled(Flex)`
 
 const Contact = styled(Wrapper)`
   margin: 0 auto;
-  h1,
-  h2,
-  h3 {
-    color: ${props => props.theme.colors.text};
-  }
-  h3 {
-    margin-top: 1rem;
-    font-size: 1.85rem;
-    font-weight: 400;
-  }
-  @media (max-width: ${props => props.theme.breakpoint.m}) {
-    font-size: 1.5rem;
-  }
 `;
 const IndexPage = ({ data, edges }) => {
   const home = data.homePage.edges;
@@ -75,8 +62,6 @@ const IndexPage = ({ data, edges }) => {
       </Wrapper>
 
       <Contact
-        px={4}
-        py={6}
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
@@ -106,7 +91,6 @@ export const pageQuery = graphql`
                 childImageSharp {
                   fluid(
                     maxWidth: 1000
-                    maxHeight: 750
                     traceSVG: { color: "#021212" }
                     cropFocus: ATTENTION
                     duotone: {
@@ -153,7 +137,7 @@ export const pageQuery = graphql`
                 childImageSharp {
                   fluid(
                     maxWidth: 1200
-                    maxHeight: 1000
+                    maxHeight: 1350
                     traceSVG: { color: "#021212" }
                     cropFocus: NORTH
                     duotone: {
