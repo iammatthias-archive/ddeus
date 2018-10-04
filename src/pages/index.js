@@ -63,62 +63,60 @@ const Contact = styled(Wrapper)`
     font-size: 1.5rem;
   }
 `;
+const IndexPage = ({ data, edges }) => {
+  const home = data.homePage.edges;
+  const blog = data.caseStudies.edges;
+  return (
+    <Layout>
+      <Header>
+        {home.map(c => (
+          <Hero
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            key={c.node.uid}
+          >
+            <h4>{c.node.data.pre_header.text}</h4>
+            <h1>{c.node.data.title.text}</h1>
+            <h3>{c.node.data.sub_header.text}</h3>
+          </Hero>
+        ))}
+      </Header>
+      <Wrapper
+        p={4}
+        mb={[4, 4, 7]}
+        mx="auto"
+        justifyContent="space-between"
+        flexWrap="wrap"
+      >
+        {blog.map(c => (
+          <GridItem
+            uid={c.node.uid}
+            key={c.node.uid}
+            sizes={c.node.data.header_image.localFile.childImageSharp.sizes}
+            alt={c.node.data.title.text}
+            title={c.node.data.title.text}
+            subtitle={c.node.data.subtitle.text}
+          />
+        ))}
+      </Wrapper>
 
-const IndexPage = ({
-  data: {
-    caseStudies: { edges }
-  }
-}) => (
-  <Layout>
-    <Header>
-      <Hero justifyContent="center" alignItems="center" flexDirection="column">
-        <h4>2018</h4>
-        <h3>The Thad</h3>
-        <h1>is under development.</h1>
-      </Hero>
-    </Header>
-    <Wrapper
-      p={4}
-      mb={[4, 4, 7]}
-      mx="auto"
-      justifyContent="space-between"
-      flexWrap="wrap"
-    >
-      {edges.map(c => (
-        <GridItem
-          uid={c.node.uid}
-          key={c.node.uid}
-          sizes={c.node.data.header_image.localFile.childImageSharp.sizes}
-          alt={c.node.data.title.text}
-          title={c.node.data.title.text}
-          subtitle={c.node.data.subtitle.text}
-        />
-      ))}
-    </Wrapper>
-
-    <Contact
-      px={4}
-      py={6}
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-    >
-      <h1>Say hi!</h1>
-      <h3>contact@domain.com</h3>
-    </Contact>
-    <Footer />
-  </Layout>
-);
+      <Contact
+        px={4}
+        py={6}
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <h1>Say hi!</h1>
+        <h3>contact@domain.com</h3>
+      </Contact>
+      <Footer />
+    </Layout>
+  );
+};
 
 export default IndexPage;
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    caseStudies: PropTypes.shape({
-      edges: PropTypes.array.isRequired
-    })
-  }).isRequired
-};
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -148,6 +146,24 @@ export const pageQuery = graphql`
               text
             }
             subtitle {
+              text
+            }
+          }
+        }
+      }
+    }
+    homePage: allPrismicHomePage {
+      edges {
+        node {
+          uid
+          data {
+            pre_header {
+              text
+            }
+            title {
+              text
+            }
+            sub_header {
               text
             }
           }

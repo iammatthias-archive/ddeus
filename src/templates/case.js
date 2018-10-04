@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import styled from 'react-emotion'
-import Image from 'gatsby-image'
-import { Box } from 'grid-emotion'
-import Layout from '../components/Layout'
-import Footer from '../components/Footer'
-import SEO from '../components/SEO'
-import config from '../../config/website'
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Helmet from "react-helmet";
+import styled from "react-emotion";
+import Image from "gatsby-image";
+import { Box } from "grid-emotion";
+import Layout from "../components/Layout";
+import Footer from "../components/Footer";
+import SEO from "../components/SEO";
+import config from "../../config/website";
 
 const Hero = styled.section`
   width: 100%;
@@ -21,11 +21,11 @@ const Hero = styled.section`
       position: static !important;
     }
   }
-`
+`;
 
 const Wrapper = styled(Box)`
   max-width: ${props => props.theme.maxWidth};
-`
+`;
 
 const TitleWrapper = styled(Box)`
   width: 100%;
@@ -34,7 +34,7 @@ const TitleWrapper = styled(Box)`
   left: 0;
   right: 0;
   background: ${props => props.theme.colors.bg};
-`
+`;
 
 const Title = styled.h1`
   color: ${props => props.theme.colors.text};
@@ -42,14 +42,14 @@ const Title = styled.h1`
   text-align: center;
   margin: 0 auto;
   padding: 0 32px;
-`
+`;
 
 const SubTitle = styled.h3`
   color: ${props => props.theme.colors.text};
   max-width: ${props => props.theme.maxWidthText};
   margin: 0 auto;
   text-align: center;
-`
+`;
 
 const Content = styled.main`
   margin-top: 9rem;
@@ -89,10 +89,10 @@ const Content = styled.main`
       margin-bottom: 3rem;
     }
   }
-`
+`;
 
 const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
-  const { data } = caseNode
+  const { data } = caseNode;
   return (
     <Layout>
       <Helmet title={`${data.title.text} | ${config.siteTitle}`} />
@@ -109,16 +109,10 @@ const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
       </Wrapper>
       <Footer isCase />
     </Layout>
-  )
-}
+  );
+};
 
-export default CaseTemplate
-
-CaseTemplate.propTypes = {
-  data: PropTypes.shape({
-    prismicCaseStudy: PropTypes.object.isRequired,
-  }).isRequired,
-}
+export default CaseTemplate;
 
 export const pageQuery = graphql`
   query CaseBySlug($uid: String!) {
@@ -155,4 +149,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
