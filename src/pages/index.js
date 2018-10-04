@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 import GridItem from "../components/GridItem";
 import Hero from "../components/Hero";
+import ContactForm from "../components/ContactForm";
 
 const Header = styled.header`
   width: 100%;
@@ -60,15 +61,7 @@ const IndexPage = ({ data, edges }) => {
           />
         ))}
       </Wrapper>
-
-      <Contact
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-      >
-        <h1>Say hi!</h1>
-        <h3>contact@domain.com</h3>
-      </Contact>
+      <ContactForm />
       <Footer />
     </Layout>
   );
