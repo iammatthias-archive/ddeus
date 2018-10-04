@@ -25,6 +25,9 @@ const Hero = styled(Flex)`
     font-size: 1.85rem;
     font-weight: 400;
   }
+  h4 {
+    font-size: 1.25rem;
+  }
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     h1 {
       line-height: 3.5rem;
@@ -69,9 +72,9 @@ const IndexPage = ({
   <Layout>
     <Header>
       <Hero justifyContent="center" alignItems="center" flexDirection="column">
+        <h4>2018</h4>
         <h3>The Thad</h3>
         <h1>is under development.</h1>
-        <h3>The Thad</h3>
       </Hero>
     </Header>
     <Wrapper
