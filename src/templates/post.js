@@ -8,7 +8,7 @@ import { Box } from "grid-emotion";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
-import config from "../../config/website";
+import config from "../utils/siteConfig";
 
 const Hero = styled.section`
   width: 100%;
@@ -91,7 +91,7 @@ const Content = styled.main`
   }
 `;
 
-const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
+const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
   const { data } = caseNode;
   return (
     <Layout>
@@ -112,7 +112,7 @@ const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
   );
 };
 
-export default CaseTemplate;
+export default PostTemplate;
 
 export const pageQuery = graphql`
   query CaseBySlug($uid: String!) {

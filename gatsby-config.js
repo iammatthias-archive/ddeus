@@ -1,7 +1,8 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
 });
-const config = require("./config/website");
+
+const config = require("./src/utils/siteConfig");
 
 const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
 
@@ -37,7 +38,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "config/typography.js"
+        pathToConfigModule: "./src/utils/typography"
       }
     },
     "gatsby-plugin-sitemap",

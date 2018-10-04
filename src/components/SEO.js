@@ -1,75 +1,75 @@
 /* eslint-disable react/require-default-props */
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import config from '../../config/website'
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import config from "../utils/siteConfig";
 
 const SEO = props => {
-  const { caseNode, casePath, caseSEO } = props
-  let title
-  let description
-  let image
-  let postURL
+  const { caseNode, casePath, caseSEO } = props;
+  let title;
+  let description;
+  let image;
+  let postURL;
   if (caseSEO) {
-    const caseMeta = caseNode.data
-    title = caseMeta.title.text
-    description = caseMeta.subtitle.text
-    image = caseMeta.header_image.localFile.childImageSharp.resize.src
-    postURL = config.siteUrl + config.pathPrefix + casePath
+    const caseMeta = caseNode.data;
+    title = caseMeta.title.text;
+    description = caseMeta.subtitle.text;
+    image = caseMeta.header_image.localFile.childImageSharp.resize.src;
+    postURL = config.siteUrl + config.pathPrefix + casePath;
   } else {
-    title = config.siteTitle
-    description = config.siteDescription
-    image = config.siteLogo
+    title = config.siteTitle;
+    description = config.siteDescription;
+    image = config.siteLogo;
   }
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-  image = config.siteUrl + realPrefix + image
-  const blogURL = config.siteUrl + config.pathPrefix
+  const realPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+  image = config.siteUrl + realPrefix + image;
+  const blogURL = config.siteUrl + config.pathPrefix;
   let schemaOrgJSONLD = [
     {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      '@id': blogURL,
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "@id": blogURL,
       url: blogURL,
       name: title,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
-    },
-  ]
+      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
+    }
+  ];
   if (caseSEO) {
     schemaOrgJSONLD = [
       {
-        '@context': 'http://schema.org',
-        '@type': 'BlogPosting',
-        '@id': postURL,
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "@id": postURL,
         url: postURL,
         name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+        alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
         headline: title,
         image: {
-          '@type': 'ImageObject',
-          url: image,
+          "@type": "ImageObject",
+          url: image
         },
         description,
         datePublished: caseNode.first_publication_date,
         dateModified: caseNode.last_publication_date,
         author: {
-          '@type': 'Person',
-          name: config.author,
+          "@type": "Person",
+          name: config.author
         },
         publisher: {
-          '@type': 'Organization',
+          "@type": "Organization",
           name: config.author,
           logo: {
-            '@type': 'ImageObject',
-            url: config.siteUrl + realPrefix + config.siteLogo,
-          },
+            "@type": "ImageObject",
+            url: config.siteUrl + realPrefix + config.siteLogo
+          }
         },
         isPartOf: blogURL,
         mainEntityOfPage: {
-          '@type': 'WebSite',
-          '@id': blogURL,
-        },
-      },
-    ]
+          "@type": "WebSite",
+          "@id": blogURL
+        }
+      }
+    ];
   }
   return (
     <Helmet>
@@ -105,24 +105,24 @@ const SEO = props => {
       <meta property="og:image" content={image} />
       <meta
         property="fb:app_id"
-        content={config.siteFBAppID ? config.siteFBAppID : ''}
+        content={config.siteFBAppID ? config.siteFBAppID : ""}
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:creator"
-        content={config.userTwitter ? config.userTwitter : ''}
+        content={config.userTwitter ? config.userTwitter : ""}
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;
 
 SEO.propTypes = {
   caseNode: PropTypes.object,
   casePath: PropTypes.string,
-  caseSEO: PropTypes.bool,
-}
+  caseSEO: PropTypes.bool
+};

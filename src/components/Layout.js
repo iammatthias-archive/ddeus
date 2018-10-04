@@ -1,12 +1,12 @@
 /* eslint no-unused-expressions: 0 */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { injectGlobal } from 'emotion'
-import { ThemeProvider } from 'emotion-theming'
+import React from "react";
+import PropTypes from "prop-types";
+import { injectGlobal } from "emotion";
+import { ThemeProvider } from "emotion-theming";
 
-import SEO from '../components/SEO'
-import theme from '../../config/theme'
+import SEO from "../components/SEO";
+import theme from "../utils/theme";
 
 injectGlobal`
   *, *:before, *:after {
@@ -92,7 +92,7 @@ injectGlobal`
       outline: 0;
     }
   }
-`
+`;
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -101,10 +101,10 @@ const Layout = ({ children }) => (
       {children}
     </React.Fragment>
   </ThemeProvider>
-)
+);
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
-}
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired
+};
 
-export default Layout
+export default Layout;

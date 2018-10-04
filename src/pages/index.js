@@ -6,45 +6,25 @@ import { Flex } from "grid-emotion";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 import GridItem from "../components/GridItem";
+import Hero from "../components/Hero";
 
 const Header = styled.header`
   width: 100%;
-  height: 61.8vh;
-  position: relative;
-  padding: 1.75rem;
-`;
-
-const Hero = styled(Flex)`
   height: 100%;
-  text-align: center;
-  h1 {
-    letter-spacing: 0.2rem;
-    line-height: 4.5rem;
-  }
-  h3 {
-    font-size: 1.85rem;
-    font-weight: 400;
-  }
-  h4 {
-    font-size: 1.25rem;
-  }
+  padding: 4rem;
   @media (max-width: ${props => props.theme.breakpoint.m}) {
-    h1 {
-      line-height: 3.5rem;
-    }
-    h3 {
-      font-size: 1.5rem;
-    }
-  }
-  @media (max-width: ${props => props.theme.breakpoint.s}) {
-    h1 {
-      line-height: 2.5rem;
-    }
+    padding: 2rem;
   }
 `;
 
 const Wrapper = styled(Flex)`
   max-width: ${props => props.theme.maxWidth};
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 4rem;
+  @media (max-width: ${props => props.theme.breakpoint.m}) {
+    padding: 2rem;
+  }
 `;
 
 const Contact = styled(Wrapper)`
@@ -69,34 +49,27 @@ const IndexPage = ({ data, edges }) => {
   return (
     <Layout>
       <Header>
-        {home.map(c => (
+        {home.map(({ node: homepage }) => (
           <Hero
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-            key={c.node.uid}
-          >
-            <h4>{c.node.data.pre_header.text}</h4>
-            <h1>{c.node.data.title.text}</h1>
-            <h3>{c.node.data.sub_header.text}</h3>
-          </Hero>
+            key={homepage.uid}
+            preheader={homepage.data.preheader.text}
+            title={homepage.data.title.text}
+            subheader={homepage.data.subheader.text}
+            bio={homepage.data.bio.html}
+            sizes={homepage.data.picture.localFile.childImageSharp.fluid}
+          />
         ))}
       </Header>
-      <Wrapper
-        p={4}
-        mb={[4, 4, 7]}
-        mx="auto"
-        justifyContent="space-between"
-        flexWrap="wrap"
-      >
-        {blog.map(c => (
+      <Wrapper>
+        {blog.map(({ node: blogposts }) => (
           <GridItem
-            uid={c.node.uid}
-            key={c.node.uid}
-            sizes={c.node.data.header_image.localFile.childImageSharp.sizes}
-            alt={c.node.data.title.text}
-            title={c.node.data.title.text}
-            subtitle={c.node.data.subtitle.text}
+            uid={blogposts.uid}
+            key={blogposts.uid}
+            date={blogposts.last_publication_date}
+            sizes={blogposts.data.header_image.localFile.childImageSharp.fluid}
+            alt={blogposts.data.title.text}
+            title={blogposts.data.title.text}
+            subtitle={blogposts.data.subtitle.text}
           />
         ))}
       </Wrapper>
@@ -126,18 +99,24 @@ export const pageQuery = graphql`
       edges {
         node {
           uid
+          last_publication_date(formatString: "MMMM DD YYYY")
           data {
             header_image {
               localFile {
                 childImageSharp {
-                  sizes(
-                    maxWidth: 900
-                    maxHeight: 900
-                    quality: 90
+                  fluid(
+                    maxWidth: 1000
+                    maxHeight: 750
                     traceSVG: { color: "#021212" }
-                    cropFocus: ENTROPY
+                    cropFocus: ATTENTION
+                    duotone: {
+                      highlight: "#f00e2e"
+                      shadow: "#192550"
+                      opacity: 15
+                    }
+                    toFormat: PNG
                   ) {
-                    ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -157,14 +136,37 @@ export const pageQuery = graphql`
         node {
           uid
           data {
-            pre_header {
+            preheader {
               text
             }
             title {
               text
             }
-            sub_header {
+            subheader {
               text
+            }
+            bio {
+              html
+            }
+            picture {
+              localFile {
+                childImageSharp {
+                  fluid(
+                    maxWidth: 1200
+                    maxHeight: 1000
+                    traceSVG: { color: "#021212" }
+                    cropFocus: NORTH
+                    duotone: {
+                      highlight: "#f00e2e"
+                      shadow: "#192550"
+                      opacity: 15
+                    }
+                    toFormat: PNG
+                  ) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
           }
         }

@@ -14,9 +14,13 @@ const Item = styled(Flex)`
   text-align: center;
   position: relative;
   @media (max-width: ${props => props.theme.breakpoint.m}) {
+    margin-top: 4rem !important;
     flex-basis: 100%;
     max-width: 100%;
     width: 100%;
+    &:first-child {
+      margin-top: 0rem !important;
+    }
   }
 `;
 
@@ -31,6 +35,12 @@ const ItemTitle = styled.h3`
 
 const ItemSubtitle = styled.p`
   color: ${props => props.theme.colors.bg};
+  margin: 0.25rem 0;
+`;
+const ItemDate = styled.p`
+  color: ${props => props.theme.colors.bg};
+  margin: 0.25rem 0;
+  font-style: italic;
 `;
 
 const Overlay = styled(Flex)`
@@ -60,6 +70,9 @@ const Overlay = styled(Flex)`
       transform: translateY(4rem);
       font-family: ${props => props.theme.fontFamily.heading};
     }
+  }
+  @media (max-width: ${props => props.theme.breakpoint.m}) {
+    opacity: 100;
   }
 `;
 
@@ -93,7 +106,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const GridItem = ({ uid, sizes, alt, title, subtitle }) => (
+const GridItem = ({ uid, date, sizes, alt, title, subtitle }) => (
   <Item
     flexDirection="column"
     key={uid}
@@ -107,6 +120,7 @@ const GridItem = ({ uid, sizes, alt, title, subtitle }) => (
       >
         <ItemTitle>{title}</ItemTitle>
         <ItemSubtitle>{subtitle}</ItemSubtitle>
+        <ItemDate>{date}</ItemDate>
       </Overlay>
       <Image sizes={sizes} alt={alt} />
     </StyledLink>

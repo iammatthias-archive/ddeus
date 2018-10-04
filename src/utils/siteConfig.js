@@ -10,6 +10,6 @@ module.exports = {
   author: "iammatthias", // Author for schemaORGJSONLD
 
   // Manifest and Progress color
-  themeColor: "#b710a1",
-  backgroundColor: "#350d27"
+  themeColor: "#2A2E31",
+  backgroundColor: "#EEE1CD"
 };
