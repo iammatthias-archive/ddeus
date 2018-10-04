@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "react-emotion";
 import Image from "gatsby-image";
@@ -48,11 +48,12 @@ const SubTitle = styled.h3`
   margin: 0 auto;
   padding: 0.5rem;
 `;
-const Date = styled.h3`
+const Date = styled.p`
   max-width: ${props => props.theme.maxWidthText};
   color: ${props => props.theme.colors.text};
   margin: 0 auto;
   padding: 0.5rem;
+  font-weight: bold;
 `;
 
 const Content = styled.main`
@@ -94,6 +95,15 @@ const Content = styled.main`
     }
   }
 `;
+const StyledLink = styled(Link)`
+  padding: 1rem;
+  transition: all 200ms ease-out;
+  opacity: 0.75;
+  &:before {
+    content: "←";
+    padding-right: 8px;
+  }
+`;
 
 const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
   const { data } = caseNode;
@@ -106,6 +116,7 @@ const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
       </Hero>
       <Wrapper>
         <TitleWrapper>
+          <StyledLink to="/">Return to home</StyledLink>
           <Title>{data.title.text}</Title>
           <SubTitle>{data.subtitle.text}</SubTitle>
           <Date>{caseNode.last_publication_date}</Date>
@@ -124,7 +135,7 @@ export const pageQuery = graphql`
     prismicCaseStudy(uid: { eq: $uid }) {
       uid
       first_publication_date
-      last_publication_date
+      last_publication_date(formatString: "MMMM DD YYYY")
       data {
         header_image {
           localFile {
@@ -150,6 +161,21 @@ export const pageQuery = graphql`
         }
         content {
           html
+        }
+      }
+    }
+    allPrismicCaseStudy(
+      sort: { fields: [last_publication_date], order: DESC }
+    ) {
+      edges {
+        node {
+          uid
+        }
+        next {
+          id
+        }
+        previous {
+          id
         }
       }
     }
