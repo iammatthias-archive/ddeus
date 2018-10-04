@@ -35,9 +35,9 @@ const Copy = styled.div`
 const Hero = ({ uid, preheader, title, subheader, bio, sizes }) => (
   <Content>
     <Copy>
-      <h4>{preheader}</h4>
+      <h2>{preheader}</h2>
       <h1>{title}</h1>
-      <h3>{subheader}</h3>
+      <h2>{subheader}</h2>
       <p dangerouslySetInnerHTML={{ __html: bio }} />
     </Copy>
     <Picture>
