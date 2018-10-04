@@ -1,39 +1,72 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+const config = require("./config/website");
+
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+
 module.exports = {
+  /* General Information */
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter"
+    siteUrl: config.siteUrl + pathPrefix
   },
+  /* Plugins */
   plugins: [
     "gatsby-plugin-react-helmet",
-    `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages"
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/img`,
-        name: "images"
-      }
-    },
-    "gatsby-plugin-sharp",
+    "gatsby-plugin-emotion",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-source-prismic",
       options: {
-        plugins: []
+        repositoryName: "ddeus",
+        accessToken: `${process.env.API_KEY}`,
+        linkResolver: ({ node, key, value }) => doc => `/${doc.uid}`,
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children
+        ) => {
+          // Your HTML serializer
+        }
       }
     },
-
-    "gatsby-plugin-netlify" // make sure to keep it last in the array
+    "gatsby-plugin-lodash",
+    {
+      resolve: "gatsby-plugin-typography",
+      options: {
+        pathToConfigModule: "config/typography.js"
+      }
+    },
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: config.siteTitle,
+        short_name: config.siteTitleAlt,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: "fullscreen",
+        icons: [
+          {
+            src: "/favicons/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "/favicons/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ]
+      }
+    },
+    /* Must be placed at the end */
+    "gatsby-plugin-offline",
+    "gatsby-plugin-netlify"
   ]
 };
