@@ -7,6 +7,7 @@ import { Flex } from "grid-emotion";
 const Wrapper = styled.footer`
   background: ${props => props.theme.colors.greyDark};
   color: ${props => props.theme.colors.greyLight};
+  padding: 0.75rem 4rem;
   a {
     color: ${props => props.theme.colors.bg};
     &:hover {
@@ -16,13 +17,11 @@ const Wrapper = styled.footer`
 `;
 
 const Inner = styled(Flex)`
-  @media (max-width: ${props => props.theme.breakpoint.l}) {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    div:last-child {
-      margin-top: 1rem;
-    }
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  div:last-child {
+    margin-top: 1rem;
   }
 `;
 
@@ -38,22 +37,30 @@ const StyledLink = styled(Link)`
     transform: translateX(-6px);
   }
 `;
+const Source = styled.p`
+  justify-self: end !important;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+`;
 
 const Footer = ({ isCase }) => {
   const year = new Date().getFullYear();
   return (
     <Wrapper>
-      <Inner justifyContent="space-between" p={4}>
+      <Inner>
         {isCase ? (
           <React.Fragment>
             <StyledLink to="/">Return to home</StyledLink>
-            <div>Contact Us</div>
+            <Source>
+              Source: <a href="https://github.com/iammatthias/ddeus">Github</a>
+            </Source>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <div>
+            <Source>
               Source: <a href="https://github.com/iammatthias/ddeus">Github</a>
-            </div>
+            </Source>
           </React.Fragment>
         )}
       </Inner>
