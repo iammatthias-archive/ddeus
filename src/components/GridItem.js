@@ -67,6 +67,7 @@ const Overlay = styled(Flex)`
 const StyledLink = styled(Link)`
   position: relative;
   transition: all 300ms;
+  height: 60vh;
   .gatsby-image-outer-wrapper {
     position: static !important;
     > div {
