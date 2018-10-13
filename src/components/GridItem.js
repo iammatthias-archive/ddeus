@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import Image from "gatsby-image";
-import styled from "react-emotion";
-import { Flex } from "grid-emotion";
-import { rgba } from "polished";
-import { randomNumber } from "../utils/randomNumber";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import Image from 'gatsby-image';
+import styled from 'react-emotion';
+import { Flex } from 'grid-emotion';
+import { rgba } from 'polished';
+import { randomNumber } from '../utils/randomNumber';
 
 const Item = styled(Flex)`
   flex-basis: calc(99.9% * 1 / 2 - 4rem);
@@ -29,7 +29,7 @@ const ItemTitle = styled.h3`
   font-size: 2rem;
   margin-top: 1.25rem;
   margin-bottom: 1rem;
-  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all 300ms;
   transform: translateY(0rem);
 `;
 
@@ -49,27 +49,15 @@ const Overlay = styled(Flex)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${props => rgba(`${props.theme.colors.primary}`, 0.6)};
+  background: ${props => rgba(`${props.theme.colors.primary}`, 0.5)};
   z-index: 10;
   opacity: 0;
-  transition: opacity 300ms ease-out;
+  transition: all 300ms;
   span {
     z-index: 20;
     color: ${props => props.theme.colors.bg};
-    font-size: 1.5rem;
     opacity: 0;
-    transition: opacity 300ms ease-out;
-    &:first-child {
-      transition: transform 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
-      transform: translateY(2rem);
-    }
-    &:last-child {
-      font-size: 3.5rem;
-      line-height: 3rem;
-      transition: transform 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
-      transform: translateY(4rem);
-      font-family: ${props => props.theme.fontFamily.heading};
-    }
+    transition: all 300ms;
   }
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     opacity: 100;
@@ -78,7 +66,7 @@ const Overlay = styled(Flex)`
 
 const StyledLink = styled(Link)`
   position: relative;
-  transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all 300ms;
   .gatsby-image-outer-wrapper {
     position: static !important;
     > div {
@@ -91,28 +79,27 @@ const StyledLink = styled(Link)`
       opacity: 1;
       span {
         opacity: 1;
-        &:first-child {
-          transform: translateY(0);
-        }
-        &:last-child {
-          transform: translateY(0);
-        }
       }
     }
-  }
-  &:hover + ${ItemTitle} {
-    transform: translateY(-1rem);
-    color: ${props => props.theme.colors.primary};
+    @media (max-width: ${props => props.theme.breakpoint.m}) {
+      transform: none;
+    }
   }
 `;
 
 const GridItem = ({ uid, date, sizes, alt, title, subtitle }) => (
-  <Item
-    flexDirection="column"
-    key={uid}
-    style={{ marginTop: `${randomNumber(1, 6) * 2}rem` }}
-  >
-    <StyledLink to={uid}>
+  <Item flexDirection="column" key={uid}>
+    <StyledLink
+      to={uid}
+      style={{
+        marginTop: `${randomNumber(1, 6) * 2}rem`,
+        borderRadius: `${randomNumber(3, 4) * 10}% ${randomNumber(4, 5) *
+          10}% ${randomNumber(6, 7) * 10}% ${randomNumber(3, 4) *
+          10}% / ${randomNumber(5, 6) * 10}% ${randomNumber(3, 4) *
+          10}% ${randomNumber(6, 7) * 10}% ${randomNumber(3, 4) * 10}%`,
+        overflow: 'hidden'
+      }}
+    >
       <Overlay
         justifyContent="center"
         alignItems="center"
@@ -122,7 +109,7 @@ const GridItem = ({ uid, date, sizes, alt, title, subtitle }) => (
         <ItemSubtitle>{subtitle}</ItemSubtitle>
         <ItemDate>{date}</ItemDate>
       </Overlay>
-      <Image sizes={sizes} alt={alt} />
+      <Image sizes={sizes} alt={alt} style={{}} />
     </StyledLink>
   </Item>
 );

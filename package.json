@@ -7,6 +7,7 @@
     "emotion": "^9.2.9",
     "emotion-server": "^9.2.9",
     "emotion-theming": "^9.2.9",
+    "eslint-config-gatsby-standard": "^2.0.0",
     "gatsby": "^2.0.0",
     "gatsby-image": "^2.0.13",
     "gatsby-plugin-emotion": "^2.0.5",

@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import styled from "react-emotion";
-import Footer from "../components/Footer";
-import Layout from "../components/Layout";
-import GridItem from "../components/GridItem";
-import Hero from "../components/Hero";
-import ContactForm from "../components/ContactForm";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import styled from 'react-emotion'
+import Footer from '../components/Footer'
+import Layout from '../components/Layout'
+import GridItem from '../components/GridItem'
+import Hero from '../components/Hero'
+import ContactForm from '../components/ContactForm'
 
 const Header = styled.header`
   width: 100%;
@@ -15,7 +15,7 @@ const Header = styled.header`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     padding: 2rem;
   }
-`;
+`
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -26,14 +26,14 @@ const Wrapper = styled.div`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     padding: 2rem;
   }
-`;
+`
 
 const Contact = styled(Wrapper)`
   margin: 0 auto;
-`;
+`
 const IndexPage = ({ data, edges }) => {
-  const home = data.homePage.edges;
-  const blog = data.caseStudies.edges;
+  const home = data.homePage.edges
+  const blog = data.caseStudies.edges
   return (
     <Layout>
       <Header>
@@ -64,10 +64,10 @@ const IndexPage = ({ data, edges }) => {
       <ContactForm />
       <Footer />
     </Layout>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -150,4 +150,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

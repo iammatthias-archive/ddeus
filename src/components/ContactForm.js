@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "react-emotion";
-import "whatwg-fetch";
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import 'whatwg-fetch'
 
 const Form = styled.form`
   width: 61.8%;
@@ -46,7 +46,7 @@ const Form = styled.form`
     }
   }
   &::before {
-    content: "";
+    content: '';
     background: black;
     height: 100%;
     width: 100%;
@@ -55,14 +55,14 @@ const Form = styled.form`
     left: 0;
     z-index: 1;
     transition: 0.2s all;
-    opacity: ${props => (props.overlay ? ".8" : "0")};
-    visibility: ${props => (props.overlay ? "visible" : "hidden")};
+    opacity: ${props => (props.overlay ? '.8' : '0')};
+    visibility: ${props => (props.overlay ? 'visible' : 'hidden')};
   }
-`;
+`
 
 const Title = styled.h2`
   width: 100%;
-`;
+`
 
 const Name = styled.input`
   margin: 0 0 2rem 0;
@@ -70,7 +70,7 @@ const Name = styled.input`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     width: 100%;
   }
-`;
+`
 
 const Email = styled.input`
   margin: 0 0 2rem 0;
@@ -78,7 +78,7 @@ const Email = styled.input`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     width: 100%;
   }
-`;
+`
 
 const Message = styled.textarea`
   width: 100%;
@@ -86,7 +86,7 @@ const Message = styled.textarea`
   line-height: 1.6;
   min-height: 250px;
   resize: vertical;
-`;
+`
 
 const Submit = styled.input`
 border: 2px solid ${props => props.theme.colors.primaryDark} !important;
@@ -103,7 +103,7 @@ border: 2px solid ${props => props.theme.colors.primaryDark} !important;
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     width: 100%;
   }
-`;
+`
 
 const Modal = styled.div`
   background: white;
@@ -121,8 +121,8 @@ const Modal = styled.div`
   align-items: center;
   text-align: center;
   transition: 0.2s all;
-  opacity: ${props => (props.visible ? "1" : "0")};
-  visibility: ${props => (props.visible ? "visible" : "hidden")};
+  opacity: ${props => (props.visible ? '1' : '0')};
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     min-width: inherit;
     max-width: 400px;
@@ -131,7 +131,7 @@ const Modal = styled.div`
     line-height: 1.6;
     margin: 0 0 2em 0;
   }
-`;
+`
 
 const Button = styled.div`
   background: ${props => props.theme.colors.primaryDark} !important;
@@ -152,57 +152,57 @@ const Button = styled.div`
   &:hover {
     background: ${props => props.theme.colors.primaryLight} !important;
   }
-`;
+`
 
 const encode = data => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 class ContactForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      name: "",
-      email: "",
-      message: "",
-      showModal: false
-    };
+      name: '',
+      email: '',
+      message: '',
+      showModal: false,
+    }
   }
 
   handleInputChange = event => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const target = event.target
+    const value = target.value
+    const name = target.name
     this.setState({
-      [name]: value
-    });
-  };
+      [name]: value,
+    })
+  }
 
   handleSubmit = event => {
-    fetch("/contact/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...this.state })
+    fetch('/contact/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...this.state }),
     })
       .then(this.handleSuccess)
-      .catch(error => alert(error));
-    event.preventDefault();
-  };
+      .catch(error => alert(error))
+    event.preventDefault()
+  }
 
   handleSuccess = () => {
     this.setState({
-      name: "",
-      email: "",
-      message: "",
-      showModal: true
-    });
-  };
+      name: '',
+      email: '',
+      message: '',
+      showModal: true,
+    })
+  }
 
   closeModal = () => {
-    this.setState({ showModal: false });
-  };
+    this.setState({ showModal: false })
+  }
 
   render() {
     return (
@@ -218,7 +218,7 @@ class ContactForm extends React.Component {
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
           <label>
-            Don’t fill this out:{" "}
+            Don’t fill this out:{' '}
             <input name="bot" onChange={this.handleInputChange} />
           </label>
         </p>
@@ -255,12 +255,12 @@ class ContactForm extends React.Component {
           <Button onClick={this.closeModal}>Okay</Button>
         </Modal>
       </Form>
-    );
+    )
   }
 }
 
 ContactForm.propTypes = {
-  data: PropTypes.object
-};
+  data: PropTypes.object,
+}
 
-export default ContactForm;
+export default ContactForm

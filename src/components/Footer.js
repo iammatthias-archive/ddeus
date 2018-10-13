@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "react-emotion";
-import { Link } from "gatsby";
-import { Flex } from "grid-emotion";
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { Link } from 'gatsby'
+import { Flex } from 'grid-emotion'
 
 const Wrapper = styled.footer`
   background: ${props => props.theme.colors.greyDark};
@@ -14,7 +14,7 @@ const Wrapper = styled.footer`
       color: ${props => props.theme.colors.primaryLight};
     }
   }
-`;
+`
 
 const Inner = styled(Flex)`
   flex-direction: row;
@@ -23,29 +23,29 @@ const Inner = styled(Flex)`
   div:last-child {
     margin-top: 1rem;
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   transform: translateX(0);
   transition: all 200ms ease-out;
   &:before {
-    content: "←";
+    content: '←';
     padding-right: 8px;
   }
   &:hover {
     color: ${props => props.theme.colors.bg};
     transform: translateX(-6px);
   }
-`;
+`
 const Source = styled.p`
   justify-self: end !important;
   display: inline-block;
   margin: 0;
   padding: 0;
-`;
+`
 
 const Footer = ({ isCase }) => {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
   return (
     <Wrapper>
       <Inner>
@@ -65,15 +65,15 @@ const Footer = ({ isCase }) => {
         )}
       </Inner>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
 
 Footer.propTypes = {
-  isCase: PropTypes.bool
-};
+  isCase: PropTypes.bool,
+}
 
 Footer.defaultProps = {
-  isCase: false
-};
+  isCase: false,
+}
