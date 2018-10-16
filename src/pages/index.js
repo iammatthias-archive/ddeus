@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import styled from 'react-emotion'
-import Footer from '../components/Footer'
-import Layout from '../components/Layout'
-import GridItem from '../components/GridItem'
-import Hero from '../components/Hero'
-import ContactForm from '../components/ContactForm'
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'react-emotion';
+import Footer from '../components/Footer';
+import Layout from '../components/Layout';
+import GridItem from '../components/GridItem';
+import Hero from '../components/Hero';
+import ContactForm from '../components/ContactForm';
 
 const Header = styled.header`
   width: 100%;
@@ -15,7 +14,7 @@ const Header = styled.header`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     padding: 2rem;
   }
-`
+`;
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -26,14 +25,10 @@ const Wrapper = styled.div`
   @media (max-width: ${props => props.theme.breakpoint.m}) {
     padding: 2rem;
   }
-`
-
-const Contact = styled(Wrapper)`
-  margin: 0 auto;
-`
+`;
 const IndexPage = ({ data, edges }) => {
-  const home = data.homePage.edges
-  const blog = data.caseStudies.edges
+  const home = data.homePage.edges;
+  const blog = data.caseStudies.edges;
   return (
     <Layout>
       <Header>
@@ -64,10 +59,10 @@ const IndexPage = ({ data, edges }) => {
       <ContactForm />
       <Footer />
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -83,13 +78,14 @@ export const pageQuery = graphql`
               localFile {
                 childImageSharp {
                   fluid(
-                    maxWidth: 1000
+                    maxWidth: 1200
+                    maxHeight: 1350
                     traceSVG: { color: "#021212" }
-                    cropFocus: ATTENTION
+                    cropFocus: NORTH
                     duotone: {
-                      highlight: "#f00e2e"
-                      shadow: "#192550"
-                      opacity: 15
+                      highlight: "#192550"
+                      shadow: "#f00e2e"
+                      opacity: 25
                     }
                     toFormat: PNG
                   ) {
@@ -134,9 +130,9 @@ export const pageQuery = graphql`
                     traceSVG: { color: "#021212" }
                     cropFocus: NORTH
                     duotone: {
-                      highlight: "#f00e2e"
-                      shadow: "#192550"
-                      opacity: 15
+                      highlight: "#192550"
+                      shadow: "#f00e2e"
+                      opacity: 25
                     }
                     toFormat: PNG
                   ) {
@@ -150,4 +146,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

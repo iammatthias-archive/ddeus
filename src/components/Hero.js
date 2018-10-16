@@ -11,12 +11,13 @@ const Content = styled.div`
   grid-template-areas: 'Left Right';
   text-align: center;
   @media (max-width: ${props => props.theme.breakpoint.m}) {
-    grid-gap: 3.5rem;
+    margin-top: 5rem;
+    grid-gap: 0.5rem;
     grid-template-columns: 1fr;
-    grid-template-areas: 'Left' 'Right';
+    grid-template-areas: 'Right' 'Left';
   }
   @media (max-width: ${props => props.theme.breakpoint.s}) {
-    grid-template-areas: 'Left' 'Right';
+    grid-template-areas: 'Right' 'Left';
   }
 `;
 
@@ -31,6 +32,9 @@ const Copy = styled.div`
   align-content: center;
   grid-area: Right;
   text-align: left;
+  @media (max-width: ${props => props.theme.breakpoint.s}) {
+    text-align: center;
+  }
 `;
 
 const Hero = ({ uid, preheader, title, subheader, bio, sizes }) => (

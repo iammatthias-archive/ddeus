@@ -26,9 +26,7 @@ const Item = styled(Flex)`
 
 const ItemTitle = styled.h3`
   color: ${props => props.theme.colors.bg};
-  font-size: 2rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1rem;
+  margin: 1.25rem;
   transition: all 300ms;
   transform: translateY(0rem);
 `;
@@ -67,7 +65,6 @@ const Overlay = styled(Flex)`
 const StyledLink = styled(Link)`
   position: relative;
   transition: all 300ms;
-  height: 60vh;
   .gatsby-image-outer-wrapper {
     position: static !important;
     > div {
@@ -94,10 +91,10 @@ const GridItem = ({ uid, date, sizes, alt, title, subtitle }) => (
       to={uid}
       style={{
         marginTop: `${randomNumber(1, 6) * 2}rem`,
-        borderRadius: `${randomNumber(3, 4) * 10}% ${randomNumber(4, 5) *
-          10}% ${randomNumber(6, 7) * 10}% ${randomNumber(3, 4) *
-          10}% / ${randomNumber(5, 6) * 10}% ${randomNumber(3, 4) *
-          10}% ${randomNumber(6, 7) * 10}% ${randomNumber(3, 4) * 10}%`,
+        borderRadius: `${randomNumber(4, 8) * 10}% ${randomNumber(4, 8) *
+          10}% ${randomNumber(4, 8) * 10}% ${randomNumber(4, 8) *
+          10}% / ${randomNumber(4, 8) * 10}% ${randomNumber(4, 8) *
+          10}% ${randomNumber(4, 8) * 10}% ${randomNumber(4, 8) * 10}%`,
         overflow: 'hidden'
       }}
     >

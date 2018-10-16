@@ -1,18 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
-import Helmet from 'react-helmet'
-import styled from 'react-emotion'
-import Image from 'gatsby-image'
-import { Box } from 'grid-emotion'
-import Layout from '../components/Layout'
-import Footer from '../components/Footer'
-import SEO from '../components/SEO'
-import config from '../utils/siteConfig'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Helmet from 'react-helmet';
+import styled from 'react-emotion';
+import Image from 'gatsby-image';
+import { Box } from 'grid-emotion';
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import SEO from '../components/SEO';
+import config from '../utils/siteConfig';
 
 const Hero = styled.section`
   width: 100%;
-  height: 61.8vh;
+  height: 75vh;
   position: relative;
   overflow: hidden;
   .gatsby-image-outer-wrapper {
@@ -21,18 +20,18 @@ const Hero = styled.section`
       position: static !important;
     }
   }
-`
+`;
 
 const Wrapper = styled(Box)`
   max-width: ${props => props.theme.maxWidth};
-`
+`;
 
 const TitleWrapper = styled(Box)`
   width: 100%;
   padding: 4.5rem 2rem;
   background: ${props => props.theme.colors.bg};
   text-align: center;
-`
+`;
 
 const Title = styled.h1`
   max-width: ${props => props.theme.maxWidthText};
@@ -40,21 +39,21 @@ const Title = styled.h1`
   text-align: center;
   margin: 0 auto;
   padding: 0 32px;
-`
+`;
 
 const SubTitle = styled.h3`
   max-width: ${props => props.theme.maxWidthText};
   color: ${props => props.theme.colors.text};
   margin: 0 auto;
   padding: 0.5rem;
-`
+`;
 const Date = styled.p`
   max-width: ${props => props.theme.maxWidthText};
   color: ${props => props.theme.colors.text};
   margin: 0 auto;
   padding: 0.5rem;
   font-weight: bold;
-`
+`;
 
 const Content = styled.main`
   margin-top: 4.5rem;
@@ -94,7 +93,7 @@ const Content = styled.main`
       margin-bottom: 3rem;
     }
   }
-`
+`;
 const StyledLink = styled(Link)`
   padding: 1rem;
   transition: all 200ms ease-out;
@@ -103,16 +102,16 @@ const StyledLink = styled(Link)`
     content: '←';
     padding-right: 8px;
   }
-`
+`;
 
 const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
-  const { data } = caseNode
+  const { data } = caseNode;
   return (
     <Layout>
       <Helmet title={`${data.title.text} | ${config.siteTitle}`} />
       <SEO caseNode={caseNode} casePath={caseNode.uid} caseSEO />
       <Hero>
-        <Image sizes={data.header_image.localFile.childImageSharp.sizes} />
+        <Image fluid={data.header_image.localFile.childImageSharp.fluid} />
       </Hero>
       <Wrapper>
         <TitleWrapper>
@@ -125,10 +124,10 @@ const PostTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
       </Wrapper>
       <Footer isCase />
     </Layout>
-  )
-}
+  );
+};
 
-export default PostTemplate
+export default PostTemplate;
 
 export const pageQuery = graphql`
   query CaseBySlug($uid: String!) {
@@ -140,12 +139,19 @@ export const pageQuery = graphql`
         header_image {
           localFile {
             childImageSharp {
-              sizes(
-                maxWidth: 1920
-                quality: 90
+              fluid(
+                maxWidth: 1800
+                quality: 100
                 traceSVG: { color: "#021212" }
+                cropFocus: NORTH
+                duotone: {
+                  highlight: "#192550"
+                  shadow: "#f00e2e"
+                  opacity: 25
+                }
+                toFormat: JPG
               ) {
-                ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 800) {
                 src
@@ -180,4 +186,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
