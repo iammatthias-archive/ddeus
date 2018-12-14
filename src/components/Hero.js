@@ -48,10 +48,10 @@ const Hero = ({ uid, preheader, title, subheader, bio, sizes }) => (
     <Picture
       sizes={sizes}
       style={{
-        borderRadius: `${randomNumber(3, 4) * 10}% ${randomNumber(6, 7) *
-          10}% ${randomNumber(5, 6) * 10}% ${randomNumber(4, 5) *
-          10}% / ${randomNumber(3, 4) * 10}% ${randomNumber(4, 5) *
-          10}% ${randomNumber(5, 6) * 10}% ${randomNumber(6, 7) * 10}%`,
+        borderRadius: `${randomNumber(3, 7) * 10}% ${randomNumber(3, 7) *
+          10}% ${randomNumber(3, 7) * 10}% ${randomNumber(3, 7) *
+          10}% / ${randomNumber(3, 7) * 10}% ${randomNumber(3, 7) *
+          10}% ${randomNumber(3, 7) * 10}% ${randomNumber(3, 7) * 10}%`,
         overflow: 'hidden'
       }}
     />
